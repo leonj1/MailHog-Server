@@ -1,4 +1,6 @@
 DEPS = $(go list -f '{{range .TestImports}}{{.}} {{end}}' ./...)
+DOCKER_IMAGE = mailhog/mailhog-server
+VERSION ?= latest
 
 all: deps fmt combined
 
@@ -18,4 +20,10 @@ deps:
 release-deps:
 	go get github.com/mitchellh/gox
 
-.PHONY: all combined release fmt deps release-deps
+docker-build:
+	docker build -t $(DOCKER_IMAGE):$(VERSION) .
+
+docker-push:
+	docker push $(DOCKER_IMAGE):$(VERSION)
+
+.PHONY: all combined release fmt deps release-deps docker-build docker-push
