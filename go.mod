@@ -3,9 +3,6 @@ module github.com/mailhog/MailHog-Server
 go 1.20
 
 require (
-	github.com/bmizerany/assert v0.0.0-20160611221934-b7ed37b82869 // indirect
-	github.com/gorilla/context v1.1.2 // indirect
-	github.com/gorilla/mux v1.8.1 // indirect
 	github.com/gorilla/pat v1.0.1
 	github.com/gorilla/websocket v1.5.1
 	github.com/ian-kent/envconf v0.0.0-20141026121121-c19809918c02
@@ -19,8 +16,23 @@ require (
 	github.com/mailhog/smtp v1.0.1
 	github.com/mailhog/storage v1.0.1
 	github.com/smartystreets/goconvey v1.8.1
+)
+
+require (
+	github.com/bmizerany/assert v0.0.0-20160611221934-b7ed37b82869 // indirect
+	github.com/gopherjs/gopherjs v1.17.2 // indirect
+	github.com/gorilla/context v1.1.2 // indirect
+	github.com/gorilla/mux v1.8.1 // indirect
+	github.com/jtolds/gls v4.20.0+incompatible // indirect
+	github.com/kr/pretty v0.3.1 // indirect
+	github.com/philhofer/fwd v1.1.3-0.20240916144458-20a13a1f6b7c // indirect
+	github.com/smarty/assertions v1.15.0 // indirect
 	github.com/stretchr/testify v1.9.0 // indirect
 	github.com/t-k/fluent-logger-golang v1.0.0 // indirect
 	github.com/tinylib/msgp v1.2.4 // indirect
+	golang.org/x/crypto v0.14.0 // indirect
+	golang.org/x/net v0.17.0 // indirect
+	gopkg.in/check.v1 v1.0.0-20201130134442-10cb98267c6c // indirect
 	gopkg.in/mgo.v2 v2.0.0-20190816093944-a6b53ec6cb22 // indirect
+	gopkg.in/yaml.v2 v2.4.0 // indirect
 )
