@@ -1,6 +1,6 @@
 DEPS = $(go list -f '{{range .TestImports}}{{.}} {{end}}' ./...)
 
-all: release-deps fmt combined
+all: deps fmt combined
 
 combined:
 	go install .
@@ -11,7 +11,11 @@ release:
 fmt:
 	go fmt ./...
 
+deps:
+	go mod download
+	go mod tidy
+
 release-deps:
 	go get github.com/mitchellh/gox
 
-.PNONY: all combined release fmt release-deps
+.PHONY: all combined release fmt deps release-deps
