@@ -27,6 +27,7 @@ func DefaultConfig() *Config {
 		WebPath:      "",
 		MessageChan:  make(chan *data.Message),
 		OutgoingSMTP: make(map[string]*OutgoingSMTP),
+		DelayConnSec: 0,
 	}
 }
 
@@ -49,6 +50,7 @@ type Config struct {
 	OutgoingSMTPFile string
 	OutgoingSMTP     map[string]*OutgoingSMTP
 	WebPath          string
+	DelayConnSec     int
 }
 
 // OutgoingSMTP is an outgoing SMTP server config
@@ -128,5 +130,6 @@ func RegisterFlags() {
 	flag.StringVar(&cfg.MaildirPath, "maildir-path", envconf.FromEnvP("MH_MAILDIR_PATH", "").(string), "Maildir path (if storage type is 'maildir')")
 	flag.BoolVar(&cfg.InviteJim, "invite-jim", envconf.FromEnvP("MH_INVITE_JIM", false).(bool), "Decide whether to invite Jim (beware, he causes trouble)")
 	flag.StringVar(&cfg.OutgoingSMTPFile, "outgoing-smtp", envconf.FromEnvP("MH_OUTGOING_SMTP", "").(string), "JSON file containing outgoing SMTP servers")
+	flag.IntVar(&cfg.DelayConnSec, "delay-conn-sec", envconf.FromEnvP("MH_DELAY_CONN_SEC", 0).(int), "Delay SMTP connections by N seconds")
 	Jim.RegisterFlags()
 }

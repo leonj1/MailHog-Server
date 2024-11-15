@@ -4,6 +4,7 @@ import (
 	"io"
 	"log"
 	"net"
+	"time"
 
 	"github.com/mailhog/MailHog-Server/config"
 )
@@ -21,6 +22,11 @@ func Listen(cfg *config.Config, exitCh chan int) *net.TCPListener {
 		if err != nil {
 			log.Printf("[SMTP] Error accepting connection: %s\n", err)
 			continue
+		}
+
+		if cfg.DelayConnSec > 0 {
+			log.Printf("[SMTP] Delaying connection for %d seconds\n", cfg.DelayConnSec)
+			time.Sleep(time.Duration(cfg.DelayConnSec) * time.Second)
 		}
 
 		if cfg.Monkey != nil {
